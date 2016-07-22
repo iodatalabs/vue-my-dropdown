@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Vue my dropdown</title>
+	<meta name="viewport" content="width=100%; initial-scale=1.0; maximum-scale=1.0; minimum-scale=1.0; user-scalable=no;" />
+	
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.5.0/styles/default.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.6/yeti/bootstrap.min.css">
+	<link href='static/style.css' rel='stylesheet' type='text/css'>
+
+	<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.5.0/highlight.min.js"></script>
+	 
+	<script   src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.min.js"></script>
+	<script type="text/javascript" src="../static/my-dropdown.min.js"></script>
+	<script type="text/javascript" src="static/index.js"></script>
+</head>
+<body>
+
+<header>
+	<div style="text-align:center">
+		<img src="static/logo.png" alt="vuejs">
+	</div>
+	<div style="text-align:center">
+		<h1>Vue my dropdown</h1>
+		<span style="max-width: 500px">
+			Handle dropdown menu easily with this Vuejs component. <a href="#" id="link_ini1" @mouseover="showDropdown('dropdown_ini1')" @mouseout="hideDropdown('dropdown_ini1')" @click.prevent="">Show me</a>
+		</span>
+	</div>
+	<div style="text-align:center">
+	<br>
+		<a href="https://github.com/davidnotplay/vue-my-dropdown" role="button" class="btn btn-success">
+			<span class="fa fa-github fa-lg"></span>&nbsp;&nbsp;View on Github
+		</a>
+	</div>
+</header>
+
+<my-dropdown id="dropdown_ini1" ref-id="link_ini1" click-out :position="['right', 'center', 'left', 'center']">
+<div class="dropdown" style="margin-left: 5px">
+	Hello!!
+</div>
+</my-dropdown>
+
+<!-- menu -->
+<a href="#" class="menu" id="menu" @click.prevent="showDropdown('menu_dropdown');" ><span class="fa fa-bars fa-lg"></span></a>
+<my-dropdown id="menu_dropdown" ref-id="menu" :position="['left', 'top', 'left', 'top']" click-out fixed>
+<ul class="dropdown menu-list nav nav-pills nav-stacked" style="padding:0">
+	<li class="nav-item"><a href="#" @click="hideDropdown('menu_dropdown')">Home</a></li>
+	<li class="nav-item"><a href="#menu_guide" @click="hideDropdown('menu_dropdown')">Guide</a></li>
+	<li class="nav-item"><a href="#menu_examples" @click="hideDropdown('menu_dropdown')">Examples</a></li>
+</ul>
+</my-dropdown>
+
+<div class="pad-container">
+	<h2 id="menu_guide">Guide</h2>
+	<h3>Requisites</h3>
+	<hr>
+
+	<ul>
+		<li>
+			jQuery >= 2.x
+		</li>
+		<li>
+			Vue >= 1.0
+		</li>
+	</ul>
+	<h3>Install &amp; Usage</h3>
+	<hr>
+	<p>
+		You can use npm
+	</p>
+	<pre><code  class="nohighlight"> $ npm install vue-my-dropdown</code></pre>
+	<p>
+		You can add <code>my-dropdown.min.js</code> file, directly in the html code of your project.
+		After you add the mixin in your <code>Vue</code> instance.
+	</p>
+		
+	<pre><code class="javascript">
+new Vue({
+	el: 'body',
+	mixins: [window.myDropdown.mixin]
+});
+	</code></pre>
+	
+	<p>
+		You also can use <code>require</code> function for add the library
+	</p>
+	<pre><code class="javascript">
+var myDropdown = require('vue-my-dropdown');
+
+new Vue({
+	el: 'body',
+	mixins: [myDropdown.mixin]
+});
+	</code></pre>
+	<h3>Variable properties</h3>
+	<hr>
+	<h4>myDropdown.mixin</h4>
+	<p>
+		This is a mixin object for <code>Vue</code>. Contains the vue component and the methods that you need for show and hide
+		the dropdown dialog. In es6 this object is exported as default.
+	</p>
+
+	<h4>myDropdwon.component</h4>
+	<p>
+		It is the dropdown component for <code>Vue</code>.
+	</p>
+
+	<h4>myDropdown.version</h4>
+	<p>
+		String with the version number.
+	</p>
+
+	<h3>Component properties.</h3>
+	<hr>
+	<h4>visible</h4>
+	<p>Set the dropdown dialog visibility.</p>
+	<ul>
+	 	<li><span>type:</span><code>Boolean</code></li>
+	 	<li><span>required:</span><code>false</code></li>
+	 	<li><span>twoWay:</span><code>false</code></li>
+	 	<li><span>default</span><code>false</code></li>
+	 </ul> 
+
+	 <h4>id</h4>
+	<p>
+		Dialog unique id. It is necessary for the methods. <a href="#menu_methods">See methods</a>
+	</p>
+
+	 <ul>
+	 	<li><span>type:</span><code>String</code></li>
+	 	<li><span>required:</span><code>true</code></li>
+	 	<li><span>twoWay:</span><code>false</code></li>
+	 </ul>
+	 <h4>ref-id</h4>
+	 <p>Id of the html element where the dropdown dialog will show.</p>
+	 <ul>
+	 	<li><span>type</span><code>String</code></li>
+	 	<li><span>required</span><code>true</code></li>
+	 	<li><span>twoWay</span><code>false</code></li>
+	 </ul>
+
+	 <h4>position</h4>
+	 <p>
+	 	Array with 4 elements indicating the dropdown dialog position with regard the html element.
+	 	The possible values are:
+	 </p>
+	 <pre><code class="nohighlight">[left|center|right, top|center|bottom, left|center|right, top|center|bottom]</code></pre>
+
+	 <p>
+	 	The 2 first array elements indicate the corner of html element. The 2 last array elements indicate the dropdown dialog corner. <a href="#example_position">See example.</a>
+	 </p>
+
+	 <ul>
+	 	<li><span>type</span><code>array</code></li>
+	 	<li><span>required</span><code>false</code></li>
+	 	<li><span>twoWay</span><code>false</code></li>
+	 	<li><span>default</span><code>['right', 'top', 'left', 'top']</code></li>
+	 </ul>
+	
+	<h4>click-out</h4>
+	<p>
+		Flag indicate if the dropdown dialog will hide when click out of it.
+	</p>
+
+	<ul>
+		<li><span>type</span><code>Boolean</code></li>
+		<li><span>required</span><code>false</code></li>
+		<li><span>twoWay</span><code>false</code></li>
+		<li><span>default</span><code>false</code></li>com
+	</ul>
+	
+	<h4>animation</h4>
+	<p>
+		Dialog animation when it show or hide. You can use the animation already created (<a href="#example_animation">See example</a>) or create new animations <a href="https://vuejs.org/guide/transitions.html">See <code>vue</code> transitions for more info</a>
+	</p>
+	<ul>
+		<li><span>type</span><code>String</code></li>
+		<li><span>required</span><code>false</code></li>
+		<li><span>twoWay</span><code>false</code></li>
+		<li><span>default</span><code>my-ani-scale</code></li>
+	</ul>
+
+	<h4>fixed</h4>
+	<p>
+		Flag indicating if the dropdown has an fixed css position or not. This property is useful if the ref html element has a fixed css position.
+	</p>
+	<ul>
+		<li><span>type</span><code>Boolean</code></li>
+		<li><span>required</span><code>false</code></li>
+		<li><span>twoWay</span><code>false</code></li>
+		<li><span>default</span><code>false</code></li>
+	</ul>
+	
+	<h3 id="menu_methods">Mixin methods</h3>
+	<hr>
+	<p>These methods are contains in the mixin variable.</p>
+
+	<h4>showDropdown(id: String): void</h4>
+	<p>
+		Show the <code>id</code> dropdown.
+	</p>
+
+	<h4>hideDropdown(id: String): void</h4>
+	<p>
+		Hide the <code>id</code> dropdown.
+	</p>
+
+	<h4>isVisibleDropdown(id: String): Boolean</h4>
+	<p>
+		Return the <code>id</code> dropdown visibility.
+	</p>
+
+	<h3>Component events</h3>
+	<hr>
+	<h4>dropdown::show(id: String)</h4>
+	<p>You can use this event to show the dropdown dialog.</p>
+
+	<h4>dropdown::hide(id: String)</h4>
+	<p>
+		You can use this event to hide the dropdown dialog.
+	</p>
+	<h4>dropdown::setVisibility(id: String, visibility: Boolean)</h4>
+	<p>
+		You can catch this event to know the dropdown dialog visibility.
+	</p>
+
+</div>
+
+
+<div class="pad-container">
+<h2 id="menu_examples">Examples</h2>
+<h3>Simple example</h3>
+<hr>
+<div class="row">
+	<div class="col-md-6 col-xs-12">
+		<pre><code class="html">
+<a href="#" id="link1" @click.prevent="showDropdown('dropdown1')">
+	dropdown <span class="fa fa-caret-right"></span>
+	</a>
+<my-dropdown id="dropdown1" ref-id="link1">
+	<div class="dropdown">
+		Hello world!!!&nbsp;
+		<a href="#" @click.prevent="hideDropdown('dropdown1')">
+			<span class="fa fa-times"></span>
+		</a>
+	</div>
+</my-dropdown>
+		</code></pre>
+
+	</div>
+
+	<div class="col-md-6 col-xs-12">
+			<div>
+					<a href="#" id="link1" @click.prevent="showDropdown('dropdown1')">
+						dropdown <span class="fa fa-caret-right"></span>
+						</a>
+
+					<my-dropdown id="dropdown1" ref-id="link1">
+						<div class="dropdown">
+							Hello world!!!
+							&nbsp;<a href="#" @click.prevent="hideDropdown('dropdown1')"><span class="fa fa-times"></span></a>
+						</div>
+					</my-dropdown>
+			</div>
+	</div>
+</div>
+
+<h3>Toggle dropdown</h3>
+<hr>
+<div class="row">
+	<div class="col-md-6 col-xs-12">
+		<pre><code class="html">
+<a href="#" @click.prevent="toggleDropdown('dropdown11')" id="link11">
+	<span v-if="!isVisibleDropdown('dropdown11')">Show me</span>
+	<span v-else>Hide me</span>
+	<span class="fa fa-caret-right"></span>
+</a>
+<my-dropdown id="dropdown11" ref-id="link11">
+	<div class="dropdown">Click again in the link to hide me.</div>
+</my-dropdown>
+		</code></pre>		
+	</div>
+
+	<div class="col-md-6 col-xs-12">
+		<a href="#" @click.prevent="toggleDropdown('dropdown11')" id="link11">
+			<span v-if="!isVisibleDropdown('dropdown11')">Show me</span>
+			<span v-else>Hide me</span>
+			<span class="fa fa-caret-right"></span>
+		</a>
+		<my-dropdown id="dropdown11" ref-id="link11">
+			<div class="dropdown">Click again in the link to hide me.</div>
+		</my-dropdown>
+	</div>
+</div>
+
+<h3>Click out example</h3>
+<hr>
+<div class="row">
+	<div class="col-md-6 col-xs-12">
+
+		<pre><code class="html">
+<a href="#" id="link2" @click.prevent="showDropdown('dropdown2')">
+	dropdown <span class="fa fa-caret-right"></span>
+</a>
+
+<my-dropdown  id="dropdown2" ref-id="link2" click-out>
+	<div class="dropdown">
+		click out to hide me!
+	</div>
+</my-dropdown>
+		</code></pre>
+
+	</div>
+	<div class="col-md-6 col-xs-12">
+		<div>
+			<a href="#" id="link2" @click.prevent="showDropdown('dropdown2')">dropdown <span class="fa fa-caret-right"></span></a>
+
+			<my-dropdown  id="dropdown2" ref-id="link2" click-out>
+				<div class="dropdown">
+					click out to hide me!
+				</div>
+			</my-dropdown>
+		</div>
+
+	</div>
+</div>
+
+<h3>Position example</h3>
+<hr>
+<div class="row" id="example_position">
+	<div class="col-md-6 col-xs-12">
+		<pre><code class="html">
+Select button coordinates:
+<select v-model="position1">
+	<option value="left">Left</option>
+	<option value="center">Center</option>
+	<option value="right" selected>Right (default)</option>
+</select>
+
+<select v-model="position2">
+	<option value="top" selected>Top (default)</option>
+	<option value="center">Center</option>
+	<option value="bottom">Bottom</option>
+</select>
+<br><br>
+Select dropdown coordinates:
+<select v-model="position3">
+	<option value="left" selected>Left (default)</option>
+	<option value="center">Center</option>
+	<option value="right">Right</option>
+</select>
+<select v-model="position4">
+	<option value="top" selected>Top (default)</option>
+	<option value="center">Center</option>
+	<option value="bottom">Bottom</option>
+</select>
+<br><br>
+<button class="btn" id="button3" @click.prevent="showDropdown('dropdown3')" type="button">
+	Show dropdown
+</button>
+<my-dropdown id="dropdown3" ref-id="button3" :position="[position1, position2, position3, position4]"  click-out>
+	<div class="dropdown" >
+		Hello world!!!
+	</div>
+</my-dropdown>
+		</code></pre>
+	</div>
+	<div class="col-md-6 col-xs-12">
+		Select button coordinates:
+		<select v-model="position1">
+			<option value="left">Left</option>
+			<option value="center">Center</option>
+			<option value="right" selected>Right (default)</option>
+		</select>
+
+		<select v-model="position2">
+			<option value="top" selected>Top (default)</option>
+			<option value="center">Center</option>
+			<option value="bottom">Bottom</option>
+		</select>
+		<br><br>
+		Select dropdown coordinates:
+		<select v-model="position3">
+			<option value="left" selected>Left (default)</option>
+			<option value="center">Center</option>
+			<option value="right">Right</option>
+		</select>
+		<select v-model="position4">
+			<option value="top" selected>Top (default)</option>
+			<option value="center">Center</option>
+			<option value="bottom">Bottom</option>
+		</select>
+		<br><br>
+		<button class="btn" id="button3" @click.prevent="showDropdown('dropdown3')" type="button">
+			Show dropdown
+		</button>
+		<my-dropdown id="dropdown3" ref-id="button3" :position="[position1, position2, position3, position4]"  click-out>
+			<div class="dropdown" >
+				Hello world!!!
+			</div>
+		</my-dropdown>
+	</div>
+</div>
+
+<h3>Animation example</h3>
+<hr>
+<div class="row" id="example_animation">
+	<div class="col-md-6 col-xs-12">
+	<pre><code class="html">
+Select animation:
+<select v-model="animation1">
+	<option value="my-ani-scale" selected>my-ani-scale (default)</option>
+	<option value="my-ani-fade">my-ani-fade</option>
+	<option value="my-ani-scalex">my-ani-scalex</option>
+	<option value="my-ani-scaley">my-ani-scaley</option>
+	<option value="">No animation</option>
+</select>
+<br>
+<button class="btn" id="button4" @click.prevent="showDropdown('dropdown4')">Show dropdown</button>
+<my-dropdown id="dropdown4" ref-id="button4" click-out :animation="animation1">
+	<div class="dropdown">
+		Hello world!!!
+	</div>
+</my-dropdown>
+	</code></pre>
+
+	</div>
+	<div class="col-md-6 col-xs-12">
+		Select animation:
+		<select v-model="animation1">
+			<option value="my-ani-scale" selected>my-ani-scale (default)</option>
+			<option value="my-ani-fade">my-ani-fade</option>
+			<option value="my-ani-scalex">my-ani-scalex</option>
+			<option value="my-ani-scaley">my-ani-scaley</option>
+			<option value="">No animation</option>
+		</select>
+		<br><br>
+		<button class="btn" id="button4" @click.prevent="showDropdown('dropdown4')" type="button">Show dropdown</button>
+		<my-dropdown id="dropdown4" ref-id="button4" click-out :animation="animation1">
+			<div class="dropdown">Hello world!!!</div>
+		</my-dropdown>
+
+	</div>
+</div>
+
+<h3>Nested dropdown</h3>
+<hr>
+<div class="row">
+	<div class="col-md-6 col-xs-12">
+		<pre><code class="html">
+<button class="btn" type="button" id="button5" @click.prevent="showDropdown('dropdown5')">
+	Menu
+</button>
+
+<my-dropdown id="dropdown5" ref-id="button5" click-out>
+	<ul class="dropdown menu-list nav nav-pills nav-stacked" style="padding:0">
+		<li class="nav-item"><a href="#">item 1</a></li>
+		<li class="nav-item"><a href="#">item 2</a></li>
+		<li class="nav-item" id="link6" >
+			<a href="#" @click.prevent="showDropdown('dropdown6')">
+				item 3&nbsp;&nbsp;&nbsp;
+				<span class="fa fa-caret-right"></span>
+			</a>
+		</li>
+	</ul>
+
+	<my-dropdown id="dropdown6" ref-id="link6" click-out>
+		<ul class="dropdown menu-list nav nav-pills nav-stacked" style="padding:0">
+			<li><a href="#">sub item 1</a></li>
+			<li><a href="#">sub item 2</a></li>
+			<li><a href="#">sub item 3</a></li>
+		</ul>
+	</my-dropdown>
+</my-dropdown>
+		</code></pre>
+	</div>
+	<div class="col-md-6 col-xs-12">
+		<button class="btn" type="button" id="button5" @click.prevent="showDropdown('dropdown5')">
+			Menu
+		</button>
+		
+		<my-dropdown id="dropdown5" ref-id="button5" click-out>
+			<ul class="dropdown menu-list nav nav-pills nav-stacked" style="padding:0">
+				<li class="nav-item"><a href="#">item 1</a></li>
+				<li class="nav-item"><a href="#">item 2</a></li>
+				<li class="nav-item" id="link6" >
+					<a href="#" @click.prevent="showDropdown('dropdown6')">
+						item 3&nbsp;&nbsp;<span class="fa fa-caret-right"></span>
+					</a>
+				</li>
+			</ul>
+
+			<my-dropdown id="dropdown6" ref-id="link6" click-out>
+				<ul class="dropdown menu-list nav nav-pills nav-stacked" style="padding:0">
+					<li><a href="#">sub item 1</a></li>
+					<li><a href="#">sub item 2</a></li>
+					<li><a href="#">sub item 3</a></li>
+				</ul>
+			</my-dropdown>
+		</my-dropdown>
+	</div>
+</div>
+
+</div>
+</body>
+</html>
