@@ -61,7 +61,7 @@
 
 	<ul>
 		<li>
-			jQuery >= 2.x
+			jQuery >= 2.0
 		</li>
 		<li>
 			Vue >= 1.0
@@ -69,10 +69,6 @@
 	</ul>
 	<h3>Install &amp; Usage</h3>
 	<hr>
-	<p>
-		You can use npm
-	</p>
-	<pre><code  class="nohighlight"> $ npm install vue-my-dropdown</code></pre>
 	<p>
 		You can add <code>my-dropdown.min.js</code> file, directly in the html code of your project.
 		After you add the mixin in your <code>Vue</code> instance.
@@ -86,8 +82,9 @@ new Vue({
 	</code></pre>
 	
 	<p>
-		You also can use <code>require</code> function for add the library
+		Or you can install the library using npm.
 	</p>
+	<pre><code  class="nohighlight hljs">$ npm install vue-my-dropdown</code></pre>
 	<pre><code class="javascript">
 var myDropdown = require('vue-my-dropdown');
 
@@ -148,7 +145,7 @@ new Vue({
 	 	Array with 4 elements indicating the dropdown dialog position with regard the html element.
 	 	The possible values are:
 	 </p>
-	 <pre><code class="nohighlight">[left|center|right, top|center|bottom, left|center|right, top|center|bottom]</code></pre>
+	 <pre><code class="nohighlight hljs">[left|center|right, top|center|bottom, left|center|right, top|center|bottom]</code></pre>
 
 	 <p>
 	 	The 2 first array elements indicate the corner of html element. The 2 last array elements indicate the dropdown dialog corner. <a href="#example_position">See example.</a>
