@@ -44,16 +44,27 @@ function setPosition($link, $dd, position, margin) {
   let origin = {}
   let [ p1, p2, p3, p4 ] = position
   let rect = $link.getBoundingClientRect()
-  let refPos = {
-    left: rect.left - $link.offsetParent.offsetLeft,
-    top: rect.top - $link.offsetParent.offsetTop }
+  let refPos = { top: 0, left: 0 }
   let dpSize = getSize($dd)
   let parentPosition = document.defaultView.getComputedStyle($link.offsetParent).position
 
-  if (parentPosition.toLowerCase() !== 'fixed') {
-    refPos.left += window.pageXOffset
-    refPos.top += window.pageYOffset
+  switch (parentPosition.toLowerCase()) {
+    case 'fixed':
+      refPos.left = rect.left - $link.offsetParent.offsetLeft
+      refPos.top = rect.top - $link.offsetParent.offsetTop
+      break
+
+    case 'absolute':
+      let parentRect = $link.offsetParent.getBoundingClientRect()
+      refPos.left = rect.left - parentRect.left
+      refPos.top = rect.top - parentRect.top
+      break
+
+    default:
+      refPos.left = rect.left - $link.offsetParent.offsetLeft + window.pageXOffset
+      refPos.top = rect.top - $link.offsetParent.offsetTop + window.pageYOffset
   }
+  console.log(refPos)
 
   cornerPos.left = refPos.left
   switch (p1) {

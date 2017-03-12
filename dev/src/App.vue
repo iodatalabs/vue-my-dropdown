@@ -132,6 +132,7 @@ export default {
                   <li><code>ani-none</code></li>
                 </ul>
                 <a href="#example-animation">See example</a>
+              </td>
             </tr>
           </tbody>
         </table>
@@ -147,8 +148,10 @@ export default {
           <tbody>
             <tr>
               <td>clickOut</td>
-              <td>Event triggered when click outside of the dropdown.
-                It is usefull for close the dropdown. <a href="#click-out-position">See example</a></td>
+              <td>
+                Event triggered when click outside of the dropdown.
+                It is usefull for close the dropdown. <a href="#click-out-position">See example</a>
+              </td>
             </tr>
           </tbody>
         </table>
@@ -160,11 +163,21 @@ export default {
               <th>Description</th>
             </tr>
           </thead> 
+
           <tbody>
             <tr>
-              <td><i>Default</i></td>
               <td>
-                Link
+                <i>Default</i>
+              </td>
+              <td>
+                Visible element in the component. The dropdown dialog will show in a position
+                relative to this html element.
+              </td>
+            </tr>
+            <tr>
+              <td>dropdown</td>
+              <td>
+                Dropdown content.
               </td>
             </tr>
           </tbody>
@@ -270,7 +283,6 @@ pre > code, code
   right: 30px 
 
   .button
-    // border-radius: 50% !important
     border: none !important
     box-shadow: 3px 3px 6px 0 #999 !important
   

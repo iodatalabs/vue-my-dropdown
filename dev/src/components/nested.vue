@@ -20,8 +20,8 @@
                 <li><a href="#">Item 2</a></li>
                 <li>
                   <dropdown :visible="visibleNested" @clickOut="visibleNested = false">
-                    <span @click="visibleNested = !visibleNested">
-                      <a href="#" @click="$event.preventDefault()">
+                    <span @click="clickNested">
+                      <a href="#">
                         Item 3 <i class="icon is-small"><span class="fa fa-caret-right"></span></i>
                       </a>
                      </span>
@@ -79,7 +79,14 @@ export default {
   data() {
     return { visible: false, visibleNested: false, code }
   },
-  components: { dropdown }
+  components: { dropdown },
+  methods: {
+    clickNested($event) {
+      $event.preventDefault()
+      this.visibleNested = !this.visibleNested
+      console.log('enter here', this.visibleNested)
+    }
+  }
 }
 </script>
 
