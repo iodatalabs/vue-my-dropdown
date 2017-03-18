@@ -27,7 +27,8 @@
       <div>
         Vue my dropdown. Simple and powerfull dropdown for Vuejs.
         <br/><br/>
-        <a href="#" class="button is-primary is-large">
+        <a href="https://github.com/davidnotplay/vue-my-dropdown"
+        class="button is-primary is-large" target="_blank">
           <span class="icon is-medium" style="color: #fff">
             <i class="fa fa-github"></i>
           </span>
