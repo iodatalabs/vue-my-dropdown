@@ -24,7 +24,7 @@
                   <option value="center">center</option>
                   <option value="right">right (default)</option>
                 </select></div>
-            </div>        
+            </div>
             <div class="control is-expanded">
               <div class="select is-fullwidth"><select name="" id="" v-model="position[1]">
                   <option value="top">top (default)</option>
@@ -44,7 +44,7 @@
                   <option value="center">center</option>
                   <option value="right">right</option>
                 </select></div>
-            </div>        
+            </div>
             <div class="control is-expanded">
               <div class="select is-fullwidth"><select name="" id="" v-model="position[3]">
                   <option value="top">top (default)</option>
@@ -58,10 +58,10 @@
       <br>
       <dropdown :visible="visible" :position="position" @clickOut="visible = false">
         <div class="inlineBlock hero is-primary" @click="visible = true">
-          <div class="hero-body">Link</div> 
+          <div class="hero-body">Link</div>
         </div>
         <div slot="dropdown" class="dialog">
-          Position: {{ position }} 
+          Position: {{ position }}
         </div>
       </dropdown>
     </div>
@@ -73,12 +73,12 @@
 import dropdown from './vue-my-dropdown'
 
 const code = (
-`<dropdown :visible="visible" :position="position" @clickOut="visible = false">
+`<dropdown :visible="visible" :position="position" @clickout="visible = false">
   <div class="inlineBlock hero is-primary" @click="visible = true">
-    <div class="hero-body">Link</div> 
+    <div class="hero-body">Link</div>
   </div>
   <div slot="dropdown" class="dialog">
-    Position: {{ position }} 
+    Position: {{ position }}
   </div>
 </dropdown>`)
 
@@ -102,5 +102,5 @@ export default {
     text-align: center
     cursor: pointer
 
-  
+
 </style>

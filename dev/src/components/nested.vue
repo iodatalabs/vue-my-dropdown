@@ -1,6 +1,6 @@
 <template>
   <section class="section">
-    <h2 class="title is-2">Nest dropdown</h2> 
+    <h2 class="title is-2">Nest dropdown</h2>
     <div class="content">
       <p>
         You can nest dropdowns.
@@ -32,13 +32,13 @@
                           <li><a href="#">subitem 3</a></li>
                         </ul>
                       </div>
-                  </dropdown> 
-                </li> 
-              </ul> 
+                  </dropdown>
+                </li>
+              </ul>
             </aside>
           </div>
-        </dropdown> 
-      
+        </dropdown>
+
       </div>
     </div>
 
@@ -49,7 +49,7 @@
 import dropdown from './vue-my-dropdown'
 
 const code = (
-`<dropdown :visible="visible" @clickOut="visible = false">
+`<dropdown :visible="visible" @clickout="visible = false">
   <span class="link" @click="visible = !visible">click here</span>
   <div slot="dropdown" class="dialog no-padding">
     <aside class="menu">
@@ -57,7 +57,7 @@ const code = (
         <li><a href="#">Item 1</a></li>
         <li><a href="#">Item 2</a></li>
         <li><a href="#" @click="$event.preventDefault()">
-          <dropdown :visible="visibleNested" @clickOut="visibleNested = false">
+          <dropdown :visible="visibleNested" @clickout="visibleNested = false">
             <span @click="visibleNested = !visibleNested">
               Item 3 <i class="icon is-small"><span class="fa fa-caret-right"></span></i>
             </span>
@@ -68,9 +68,9 @@ const code = (
                 <li><a href="#">subitem 3</a></li>
               </ul>
             </div>
-          </dropdown> 
-        </a></li> 
-      </ul> 
+          </dropdown>
+        </a></li>
+      </ul>
     </aside>
   </div>
 </dropdown>`)

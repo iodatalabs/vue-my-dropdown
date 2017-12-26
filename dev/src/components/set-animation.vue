@@ -1,12 +1,12 @@
 <template>
   <section class="section" id="example-animation">
-    <h2 class="title is-2">Set animation</h2> 
+    <h2 class="title is-2">Set animation</h2>
     <div class="content">
       <p>
         You can define the transition with the <code>animation</code> property. There 4 animations made:
         <code>ani-slide</code> <i>default</i>, <code>ani-slide-x</code>, <code>ani-slide-y</code>,
         <code>ani-fade</code> and <code>ani-none</code> <i>no animation</i>
-         
+
       </p>
     </div>
     <div class="columns">
@@ -30,10 +30,10 @@
         <dropdown :visible="visible" :animation="animation" @clickOut="visible = false">
           <span class="link" @click="visible = !visible">click here</span>
           <div slot="dropdown" class="dialog">
-            hello world 
+            hello world
           </div>
-        </dropdown> 
-      
+        </dropdown>
+
       </div>
     </div>
 
@@ -43,10 +43,10 @@
 import dropdown from './vue-my-dropdown'
 
 const code = (
-`<dropdown :visible="visible" :animation="animation" @clickOut="visible = false">
+`<dropdown :visible="visible" :animation="animation" @clickout="visible = false">
   <span class="link" @click="visible = !visible">click here</span>
   <div slot="dropdown" class="dialog">
-    hello world 
+    hello world
   </div>
 </dropdown>`)
 

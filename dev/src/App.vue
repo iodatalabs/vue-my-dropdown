@@ -9,21 +9,21 @@
             <a href="#" class="button is-large is-primary"
               @click="$event.preventDefault(); menuVisibility = !menuVisibility">
                 <span class="icon is-medium"><i class="fa fa-bars"></i></span>
-            </a> 
+            </a>
 
             <div class="dialog no-padding" slot="dropdown">
               <aside class="menu top-menu">
                 <ul class="menu-list">
                   <li><a href="#" @click="goTo($event, 'usage')">Usage</a></li>
                   <li><a href="#" @click="goTo($event, 'guide')">Guide</a></li>
-                  <li><a href="#" @click="goTo($event, 'examples')">Examples</a></li> 
+                  <li><a href="#" @click="goTo($event, 'examples')">Examples</a></li>
                 </ul>
-              </aside> 
+              </aside>
             </div>
         </dropdown>
       </p>
     <header class="hero is-light is-bold is-fullheight">
-      <img src="./assets/logo.png" alt="vuejs"/>
+      <img src="./assets/logo.png" alt="vuejs" style="width: 200px; height: 200px"/>
       <div>
         Vue my dropdown. Simple and powerfull dropdown for Vuejs.
         <br/><br/>
@@ -38,7 +38,7 @@
     </header>
     <div>
       <section class="section" id="usage">
-        <h2 class="title is-2">Usage</h2> 
+        <h2 class="title is-2">Usage</h2>
         <div class="content">
         <p>
           Use node and npm to download vue-my-dropdown
@@ -46,7 +46,7 @@
         </p>
 
         <p>
-          Now you can import vue-my-dropdown in your code and use it. 
+          Now you can import vue-my-dropdown in your code and use it.
           <pre><code class="javascript">
 import dropdown from 'vue-my-dropdown';
 
@@ -67,7 +67,7 @@ export default {
             <li :class="{'is-active': tab1 == 'properties'}"><a href="#" @click="$event.preventDefault(); tab1 = 'properties'">Properties</a></li>
             <li :class="{'is-active': tab1 == 'events'}"><a href="#" @click="$event.preventDefault(); tab1 = 'events'">Events</a></li>
             <li :class="{'is-active': tab1 == 'slots'}"><a href="#" @click="$event.preventDefault(); tab1 = 'slots'">Slots</a></li>
-          </ul> 
+          </ul>
         </div>
         <table class="table" v-show="tab1 == 'properties'">
           <thead>
@@ -82,7 +82,7 @@ export default {
               <td>visible</td>
               <td><code>Boolean</code></td>
               <td>
-                Dropdown visibility. 
+                Dropdown visibility.
               </td>
             </tr>
             <tr>
@@ -101,19 +101,19 @@ export default {
                       <code>center</code>
                       <code>right</code></li>
                       <li>
-                        Horizontal dropdown position 
+                        Horizontal dropdown position
                         <code>left</code>
                         <code>center</code>
                         <code>right</code>
                       </li>
 
                       <li>
-                        Vertical dropdown position 
+                        Vertical dropdown position
                         <code>top</code>
                         <code>center</code>
-                        <code>bottom</code> 
+                        <code>bottom</code>
                       </li>
-                    </ul> 
+                    </ul>
                     <a href="#example-position">See example</a>
                   </p>
               </td>
@@ -145,15 +145,23 @@ export default {
               <th>Name</th>
               <th>Description</th>
             </tr>
-          </thead> 
+          </thead>
           <tbody>
             <tr>
-              <td>clickOut</td>
+              <td>clickout</td>
               <td>
                 Event triggered when click outside of the dropdown.
                 It is usefull for close the dropdown. <a href="#click-out-position">See example</a>
               </td>
             </tr>
+            <tr>
+              <td>positioned (2.1.0)</td>
+              <td>
+                Event triggered when the dropdown is opened.
+                <a href="#example-positioned">See example</a>
+              </td>
+            </tr>
+
           </tbody>
         </table>
 
@@ -163,7 +171,7 @@ export default {
               <th>Name</th>
               <th>Description</th>
             </tr>
-          </thead> 
+          </thead>
 
           <tbody>
             <tr>
@@ -183,7 +191,7 @@ export default {
             </tr>
           </tbody>
         </table>
-      </section>      
+      </section>
 
       <basic/>
       <click-out/>
@@ -191,6 +199,7 @@ export default {
       <set-position/>
       <set-animation/>
       <nested/>
+      <positioned-event/>
       <section class="empty-block">
       </section>
       <section class="footer hero is-dark is-bold">
@@ -213,6 +222,7 @@ import basic from './components/basic-test'
 import clickOut from './components/click-out'
 import customizeEvent from './components/customize-event'
 import setAnimation from './components/set-animation'
+import PositionedEvent from './components/positioned'
 import nested from './components/nested'
 import hljs from './hljs'
 
@@ -224,7 +234,9 @@ export default {
       menuVisibility: false
     }
   },
-  components: { dropdown, basic, setPosition, clickOut, customizeEvent, setAnimation, nested },
+  components: {
+    dropdown, basic, setPosition, clickOut, customizeEvent, setAnimation, nested, PositionedEvent
+  },
   methods: {
     goTo(evt, go) {
       evt.preventDefault()
@@ -281,12 +293,12 @@ pre > code, code
   position: fixed !important
   z-index: 100 !important
   top: 30px
-  right: 30px 
+  right: 30px
 
   .button
     border: none !important
     box-shadow: 3px 3px 6px 0 #999 !important
-  
+
   .dialog
     z-index: 101 !important
 
@@ -301,14 +313,14 @@ pre > code, code
 
 .footer
   font-size: 16px !important
-  font-family: "Courier New", Courier, monospace 
+  font-family: "Courier New", Courier, monospace
   .new
     font-size: 16px !important
     color: #5aa5d8
   .music
     font-size: 16px !important
     color: #c964aa
-    vertical-align: middle 
+    vertical-align: middle
     display: inline-block
     margin-top: -3px
 
