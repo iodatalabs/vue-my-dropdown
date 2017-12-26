@@ -1,6 +1,6 @@
 <template>
   <section class="section" id="examples">
-    <h2 class="title is-2">Basic example</h2> 
+    <h2 class="title is-2">Basic example</h2>
     <div class="columns">
       <div class="column is-half">
         <pre><code class="htmlbars">{{ code }}</code></pre>
@@ -9,10 +9,10 @@
         <dropdown :visible="visible">
           <span class="link" @click="visible = !visible">click here</span>
           <div slot="dropdown" class="dialog">
-            hello world 
+            hello world
           </div>
-        </dropdown> 
-      
+        </dropdown>
+
       </div>
     </div>
 
@@ -23,9 +23,11 @@
 import dropdown from './vue-my-dropdown'
 
 const code = (
-`<span class="link" @click="visible = !visible">click here</span>
+`
+<dropdown>
+  <span class="link" @click="visible = !visible">click here</span>
   <div slot="dropdown" class="dialog">
-    hello world 
+    hello world
     </div>
 </dropdown>`)
 
