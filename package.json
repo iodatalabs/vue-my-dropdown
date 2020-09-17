@@ -3,6 +3,9 @@
   "version": "2.1.0",
   "description": "Dropdown component to vuejs",
   "author": "David Casado Martínez @davidnotplay <dcasadomartinez@gmail.com>",
+  "contributors": [
+    "Yashodhan Sing <yashodhan.singh#unoapp.io>"
+  ],
   "license": "MIT",
   "keywords": [
     "vuejs",
