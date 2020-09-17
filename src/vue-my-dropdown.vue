@@ -130,7 +130,7 @@ function setPosition($link, $dd, position, margin) {
 const getWindow = () => window.document
 
 export default {
-  name: 'VueMyDropdown',
+  name: 'Dropdown',
 
   data() {
     return {
