@@ -1,36 +1,40 @@
-# Vue my dropdown component
+# Vue dropdown component
+
 Handle dropdown menu easily with this Vuejs component.
 
 ## Requisites
+
 Vuejs >= 2.x
 
 ## Install
+
 ```bash
-$ npm install vue-my-dropdown
+npm i github:iodatalabs/vue2-dropdown@0.1.0
+```
+
+```bash
+yarn add github:iodatalabs/vue2-dropdown@0.1.0
 ```
 
 ## Usage
+
 You can import and insert the component using:
 
 ```javascript
-import dropdown from 'vue-my-dropdown'
+import Dropdown from '@iodatalabs/vue2-dropdown'
 
 // Component
 export default {
     //...
-    components: { dropdown },
+    components: { Dropdown }
     //...
 }
 ```
 
 ## Documentation
-[Official documentation](https://davidnotplay.github.io/vue-my-dropdown/)
 
-## Changelog
-### 2.1.0
-- Fixed error in IE <= 11.
-- Added positioned event.
-- Changed `.babelrc` configuration. Now use `env` preset
+[Original documentation](https://davidnotplay.github.io/vue-my-dropdown/)
 
 ## LICENSE
+
 The license is MIT. See LICENSE file to more info.
