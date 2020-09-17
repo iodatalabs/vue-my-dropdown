@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import dropdown from './vue-my-dropdown'
+import Dropdown from './Dropdown'
 
 export default {
   name: 'app',
@@ -17,7 +17,7 @@ export default {
     return { visible: false }
   },
 
-  components: { dropdown },
+  components: { Dropdown },
 
   methods: {
     showPosition(r) {
