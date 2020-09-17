@@ -1,6 +1,6 @@
 {
   "name": "@iodatalabs/vue2-dropdown",
-  "version": "2.1.0",
+  "version": "0.1.0",
   "description": "Dropdown component to vuejs",
   "author": "David Casado Martínez @davidnotplay <dcasadomartinez@gmail.com>",
   "contributors": [
